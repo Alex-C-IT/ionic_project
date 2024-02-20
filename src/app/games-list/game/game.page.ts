@@ -1,38 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
-import { FilmService } from 'src/app/film.service';
-import { Film } from 'src/app/models/film.model';
+import { GameService } from 'src/app/game.service';
+import { Game } from 'src/app/models/game.model';
 
 @Component({
-  selector: 'app-film',
-  templateUrl: './film.page.html',
-  styleUrls: ['./film.page.scss'],
+  selector: 'app-game',
+  templateUrl: './game.page.html',
+  styleUrls: ['./game.page.scss'],
 })
-export class FilmPage implements OnInit {
+export class GamePage implements OnInit {
   modif: boolean = false;
-  film!: Film;
+  game!: Game;
 
   constructor(
     private alertCtrl : AlertController,
     private route: ActivatedRoute,
-    private Film: FilmService,
+    private Game: GameService,
     private toastCtrl: ToastController,
     private router: Router
   ) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.Film.get(id).subscribe((value: any) => {
-      this.film = value;
+    this.Game.get(id).subscribe((value: any) => {
+      this.game = value;
     });
   }
 
   async setModif() {
     if(!this.modif) {
       const alert = await this.alertCtrl.create({
-        header : 'Etes vous sur de vouloir modifier ?',
-        subHeader: 'Vous rendrez possible la modification',
+        header : 'Êtes-vous sûr de vouloir le modifier ?',
+        subHeader: 'Vous rendrez possible la modification.',
         buttons : [
           {
             text: 'Annuler',
@@ -51,21 +51,21 @@ export class FilmPage implements OnInit {
 
   async presentToast() {
     const toast = this.toastCtrl.create({
-      message: 'Vos modifications sont enregistrées',
+      message: 'Vos modifications ont été enregistrées',
       duration: 2000
     });
     (await toast).present();
   }
 
   onModif() {
-    this.Film.update(this.film).subscribe(() => {
+    this.Game.update(this.game).subscribe(() => {
       this.presentToast();
       this.modif = false;
     });
   }
 
   onDelete(id: any) {
-    this.Film.delete(id);
-    this.router.navigate(['/films']);
+    this.Game.delete(id);
+    this.router.navigate(['/games']);
   }
 }

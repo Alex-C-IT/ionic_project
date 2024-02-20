@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/games"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="game">{{ game.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-button (click)="setModif()">Modifier</ion-button>
+  <div *ngIf="!modif">
+    <ion-grid *ngIf="game">
+      <ion-row>
+        <ion-col>
+          <strong>Au cinéma :</strong>
+          <ion-icon *ngIf="game.onAir" name="checkmark"></ion-icon>
+          <ion-icon *ngIf="!game.onAir" name="close-circle"></ion-icon>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="onDelete(game.id)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <img [src]="game.pictureLink" [alt]="game.title">
+        </ion-col>
+        <ion-col>
+          <strong>Title</strong><br>
+          {{game.title}} <br>
+          <strong>Date</strong><br>
+          {{game.releaseDate}} <br>
+          <strong>Réalisateur</strong><br>
+          {{game.realisator}} <br>
+          <strong>Producteur</strong><br>
+          {{game.productor}} <br>
+          <strong>Musique</strong><br>
+          {{game.music}} <br>
+          <strong>Scénario</strong> <br>
+          {{game.scenario}}  <br>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <strong>Pays</strong><br>
+          {{game.country}} <br>
+        </ion-col>
+        <ion-col>
+          <strong>Durée</strong> <br>
+          {{game.time}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <strong>Résumé</strong> <br>
+          <p>
+            {{game.synopsis}}
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="modif">
+    <ion-item>
+      <ion-input type="text" label="Affiche" [(ngModel)]="game.pictureLink"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" label="Titre" [(ngModel)]="game.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" label="Pays" [(ngModel)]="game.country"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" label="Date" [(ngModel)]="game.releaseDate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" label="Réalisateur" [(ngModel)]="game.realisator"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" label="Producteur" [(ngModel)]="game.productor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" label="Musique" [(ngModel)]="game.music"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" label="Scénario" [(ngModel)]="game.scenario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" label="Durée" [(ngModel)]="game.time"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-toggle label="Linux ?" [(ngModel)]="game.onAir"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-textarea label="Synopsis" rows="20" [(ngModel)]="game.synopsis"></ion-textarea>
+    </ion-item>
+    <p class="text-center">
+      <ion-button (click)="onModif()">Modifier</ion-button>
+    </p>
+  </div>
+</ion-content>
