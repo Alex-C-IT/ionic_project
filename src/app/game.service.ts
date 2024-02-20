@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Film } from './models/film.model';
+import { Game } from './models/game.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FilmService {
-  private dbPath = '/films';
-  filmsRef: AngularFirestoreCollection<Film>;
+export class GameService {
+  private dbPath = '/games';
+  gamesRef: AngularFirestoreCollection<Game>;
 
 
   constructor(
     private db: AngularFirestore
   ) { 
-    this.filmsRef = db.collection(this.dbPath);
+    this.gamesRef = db.collection(this.dbPath);
   }
 
   getAll() : any {
-    return this.filmsRef.snapshotChanges().pipe(
+    return this.gamesRef.snapshotChanges().pipe(
       map((changes: any) => {
         return changes.map((doc:any) => {
           return ({id: doc.payload.doc.id, ...doc.payload.doc.data()})
@@ -27,9 +27,9 @@ export class FilmService {
     );
   }
 
-  saveNewFilm(film: Film) : any {
+  saveNewFilm(game: Game) : any {
     return new Observable(obs => {
-      this.filmsRef.add({...film}).then(() => {
+      this.gamesRef.add({...game}).then(() => {
         obs.next();
       });
     });
@@ -37,20 +37,20 @@ export class FilmService {
 
   get(id: any):any {
     return  new Observable(obs => {
-      this.filmsRef.doc(id).get().subscribe(res => {
+      this.gamesRef.doc(id).get().subscribe(res => {
         obs.next({id: res.id, ...res.data()});
       });
     });
   }
 
-  update(film:Film) {
+  update(game:Game) {
     return new Observable(obs => {
-      this.filmsRef.doc(film.id).update(film);
+      this.gamesRef.doc(game.id).update(game);
       obs.next();
     });
   }
 
   delete(id: any) {
-    this.db.doc(`films/${id}`).delete();
+    this.db.doc(`games/${id}`).delete();
   }
 }

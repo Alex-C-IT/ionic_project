@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { FilmService } from 'src/app/film.service';
-import { Film } from 'src/app/models/film.model';
+import { FilmService } from 'src/app/game.service';
+import { Film } from 'src/app/models/game.model';
 
 @Component({
   selector: 'app-film-new',
