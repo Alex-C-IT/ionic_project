@@ -16,7 +16,8 @@ export class GamesListPage implements OnInit {
 
   ngOnInit() {
     this.Game.getAll().subscribe((data: any) => {
-      this.Game = data;
+      this.games = data;
+      console.log(this.games);
     });
   }
 

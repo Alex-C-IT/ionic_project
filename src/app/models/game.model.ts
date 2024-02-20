@@ -18,7 +18,6 @@ export class Game {
     possessed: boolean;
 
     constructor() {
-        this.id = '';
         this.pictureLink = '';
         this.title = '';
         this.developer = '';

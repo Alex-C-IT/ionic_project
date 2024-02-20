@@ -8,9 +8,23 @@
   <h2>Liste de mes jeux</h2>
   <ion-grid>
     <ion-row>
-      <ion-col size="4" *ngFor="let game of games">
-        <ion-card [routerLink]="['/games', game.id]">
-          <img [src]="game.pictureLink" [alt]="game.title">
+      <ion-col size="6" *ngFor="let game of games">
+        <ion-card>
+          <ion-card-header>
+            <div class="ion-text-center">
+              <ion-card-title>{{game.title}}</ion-card-title>
+              <ion-card-subtitle *ngIf="game.possessed">Dans ma collection</ion-card-subtitle>
+              <ion-card-subtitle *ngIf="!game.possessed">A acquérir</ion-card-subtitle>
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <div class="ion-text-center">
+              <img [src]="game.pictureLink" alt="Image du jeu {{game.pictureLink}}" max-width="256" max-height="340">
+            </div>
+            <div class="ion-text-center">
+              <ion-button routerLink="/games/{{game.id}}">Voir</ion-button>
+            </div>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
@@ -18,7 +32,6 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <!-- Centré -->
     <ion-title class="ion-text-center">Quel sera mon prochain souhait ?</ion-title>
   </ion-toolbar>
 </ion-footer>
