@@ -1,42 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { FilmService } from 'src/app/game.service';
-import { Film } from 'src/app/models/game.model';
+import { GameService } from 'src/app/game.service';
+import { Game } from 'src/app/models/game.model';
 
 @Component({
-  selector: 'app-film-new',
-  templateUrl: './film-new.page.html',
-  styleUrls: ['./film-new.page.scss'],
+  selector: 'app-game-new',
+  templateUrl: './game-new.page.html',
+  styleUrls: ['./game-new.page.scss'],
 })
-export class FilmNewPage implements OnInit {
-  public film!: Film;
+export class GameNewPage implements OnInit {
+  public game!: Game;
 
   constructor(
-    private Film: FilmService,
+    private Game: GameService,
     private toastCtrl: ToastController,
     private router : Router
   ) { }
 
   ngOnInit() {
-    this.film = new Film();
+    this.game = new Game();
   }
 
   async presentToast() {
     const toast = this.toastCtrl.create({
-      message: 'Nouveau Film enregistré',
+      message: 'Nouveau jeu vidéo ajouté',
       duration: 2000
     });
     (await toast).present().then(() => {
       setTimeout(() => {
-        this.router.navigate(['/films']);
+        this.router.navigate(['/games']);
       }, 2000);
     });
   }
 
   add() {
-    this.Film.saveNewFilm(this.film).subscribe(() => {
-      this.film = new Film();
+    this.Game.saveNewFilm(this.game).subscribe(() => {
+      this.game = new Game();
       this.presentToast();
     });
   }

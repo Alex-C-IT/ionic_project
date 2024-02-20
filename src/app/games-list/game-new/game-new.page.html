@@ -1,0 +1,108 @@
+<!--
+
+  export class Game {
+    
+    id?: string;
+    title: string;
+    pictureLink: string;
+    developer: string;
+    publisher: string;
+    designer: string;
+    programmer: string;
+    artist: string;
+    writer: string;
+    composer: string;
+    platform: string;
+    releaseDate: string;
+    genre: string;
+    mode: string;
+    synopsis: string;
+    possessed: boolean;
+
+    constructor() {
+        this.id = '';
+        this.pictureLink = '';
+        this.title = '';
+        this.developer = '';
+        this.publisher = '';
+        this.designer = '';
+        this.programmer = '';
+        this.artist = '';
+        this.writer = '';
+        this.composer = '';
+        this.platform = '';
+        this.releaseDate = '';
+        this.genre = '';
+        this.mode = '';
+        this.synopsis = '';
+        this.possessed = false;
+    }
+}
+
+-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nouveau Jeu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-input type="text" label="Titre" [(ngModel)]="game.title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Affiche" [(ngModel)]="game.pictureLink"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Développeur(s)" [(ngModel)]="game.developer"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Éditeur(s)" [(ngModel)]="game.publisher"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Designer(s)" [(ngModel)]="game.designer"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Programmeur(s)" [(ngModel)]="game.programmer"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Artiste(s)" [(ngModel)]="game.artist"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Scénariste(s)" [(ngModel)]="game.writer"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Compositeur(s)" [(ngModel)]="game.composer"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Plateforme(s)" [(ngModel)]="game.platform"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Date de sortie" [(ngModel)]="game.releaseDate"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Genre(s)" [(ngModel)]="game.genre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" label="Mode(s)" [(ngModel)]="game.mode"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea label="Synopsis" rows="20" [(ngModel)]="game.synopsis"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Dans ma collection</ion-label>
+    <ion-toggle [(ngModel)]="game.possessed" label="Dans ma collection"></ion-toggle>
+  </ion-item>
+  <p class="text-center">
+    <ion-button (click)="add()">Ajouter</ion-button>
+  </p>
+</ion-content>
+
+
+
+
+
+<!--<ion-item>
+  <ion-toggle [(ngModel)]="game.onAir" label="En cours de diffusion"></ion-toggle>
+</ion-item>-->

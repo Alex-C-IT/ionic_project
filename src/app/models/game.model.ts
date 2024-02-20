@@ -1,28 +1,38 @@
 export class Game {
+    
     id?: string;
-    country: string;
-    music: string;
-    onAir: boolean;
-    pictureLink: string;
-    productor: string;
-    realisator: string;
-    releaseDate: string;
-    scenario: string;
-    synopsis: string;
-    time: string;
     title: string;
+    pictureLink: string;
+    developer: string;
+    publisher: string;
+    designer: string;
+    programmer: string;
+    artist: string;
+    writer: string;
+    composer: string;
+    platform: string;
+    releaseDate: string;
+    genre: string;
+    mode: string;
+    synopsis: string;
+    possessed: boolean;
 
     constructor() {
-        this.country = '';
-        this.music = '';
-        this.onAir = false;
+        this.id = '';
         this.pictureLink = '';
-        this.productor = '';
-        this.realisator = '';
-        this.releaseDate = '';
-        this.scenario = '';
-        this.synopsis = '';
-        this.time = '';
         this.title = '';
+        this.developer = '';
+        this.publisher = '';
+        this.designer = '';
+        this.programmer = '';
+        this.artist = '';
+        this.writer = '';
+        this.composer = '';
+        this.platform = '';
+        this.releaseDate = '';
+        this.genre = '';
+        this.mode = '';
+        this.synopsis = '';
+        this.possessed = false;
     }
 }
